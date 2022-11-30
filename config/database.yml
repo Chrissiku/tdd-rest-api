@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: tdd_rest_api_development
+
+test:
+  <<: *default
+  database: tdd_rest_api_test
+
+production:
+  <<: *default
+  database: tdd_rest_api_production
+  username: tdd_rest_api
+  password: <%= ENV["TDD_REST_API_DATABASE_PASSWORD"] %>
