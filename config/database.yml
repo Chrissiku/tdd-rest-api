@@ -9,11 +9,11 @@ default: &default
 
 development:
   <<: *default
-  database: tdd_rest_api_development
+  database: tdd_rest_api
 
 test:
   <<: *default
-  database: tdd_rest_api_test
+  database: tdd_rest_api
 
 production:
   <<: *default
