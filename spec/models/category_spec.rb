@@ -9,4 +9,4 @@ RSpec.describe Category, type: :model do
     should validate_length_of(:name)
       .is_at_least(3)
   }
- end
+end

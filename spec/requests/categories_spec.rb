@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Categories", type: :request do
+RSpec.describe 'Categories', type: :request do
   # describe "GET /index" do
   #   pending "add some examples (or delete) #{__FILE__}"
   # end
@@ -40,7 +40,7 @@ RSpec.describe "Categories", type: :request do
       end
       it 'returns a validation failure message' do
         expect(response.body)
-        .to include("is too short (minimum is 3 characters)")
+          .to include('is too short (minimum is 3 characters)')
       end
     end
   end
@@ -53,11 +53,11 @@ RSpec.describe "Categories", type: :request do
   end
 
   # Test suite for UPDATE /category/:id
-    # describe 'UPDATE /categories/:id' do
-    #   let(:valid_name) { { name: 'Horror' } }
-    #   before { put "/api/v1/categories/#{category_id}", params: valid_name }
-    #   it 'returns status code 204' do
-    #     expect(response).to have_http_status(204)
-    #   end
-    # end
+  # describe 'UPDATE /categories/:id' do
+  #   let(:valid_name) { { name: 'Horror' } }
+  #   before { put "/api/v1/categories/#{category_id}", params: valid_name }
+  #   it 'returns status code 204' do
+  #     expect(response).to have_http_status(204)
+  #   end
+  # end
 end
