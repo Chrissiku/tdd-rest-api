@@ -1,10 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Books", type: :request do
-  # describe "GET /index" do
-  #   pending "add some examples (or delete) #{__FILE__}"
-  # end
-
+RSpec.describe 'Books', type: :request do
   # initialize test data
   let!(:books) { create_list(:book, 10) }
   let(:book_id) { books.first.id }
@@ -29,6 +25,7 @@ RSpec.describe "Books", type: :request do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
+
       it 'returns the book item' do
         expect(json['id']).to eq(book_id)
       end
@@ -48,12 +45,11 @@ RSpec.describe "Books", type: :request do
   end
 
   describe 'POST /books/:id' do
-
     let!(:history) { create(:category) }
-
+    let!(:user1) { create(:user) }
     let(:valid_attributes) do
       { title: 'Whispers of Time', author: 'Dr. Krishna Saksena',
-      category_id: history.id }
+        category_id: history.id, user_id: user1.id }
     end
 
     context 'when request attributes are valid' do
@@ -86,6 +82,7 @@ RSpec.describe "Books", type: :request do
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
       end
+
       it 'updates the book' do
         updated_item = Book.find(book_id)
         expect(updated_item.title).to match(/Saffron Swords/)
